@@ -52,14 +52,14 @@ class Partner(models.Model):
             self.country_id = self.city_id.area_id.state_id.country_id
             if len(self.city_id.zip_ids.ids) == 1:
                 # set zip code directly
-                self.zip = self.city_id.zip_ids.name
-            # set zip_id to empty in case of city changes
-            elif self.zip != self.zip_id.name:
-                self.zip = ''
+                self.zip, self.zip_id = self.city_id.zip_ids.name, self.city_id.zip_ids.id
+            elif self.zip_id and not (self.zip_id.id in self.city_id.zip_ids.ids):
+                # the city previously selected is not linked to this zip code
+                self.zip_id, self.zip = False, ''
             return {'domain': {
                 'zip_id': [('id', 'in', self.city_id.zip_ids.ids)],
             }}
-        else: # city_id is empty : reseting domain on zip_id list
+        else:  # city_id is empty : reseting domain on zip_id list
             self.city = ''
             return {'domain': {
                 'zip_id': self.city_id.zip_ids.ids,
@@ -76,21 +76,20 @@ class Partner(models.Model):
             self.country_id = self.city_id.area_id.state_id.country_id
             if len(self.zip_id.city_ids.ids) == 1:
                 # set zip code directly
-                self.city = self.zip_id.city_ids.name
-            # set city_id to empty in case of zip changes
-            elif self.zip != self.zip_id.name:
-                self.city = ''
+                self.city_id, self.city = self.zip_id.city_ids.id, self.zip_id.city_ids.name
+            elif self.city_id and not (self.city_id.id in self.zip_id.city_ids.ids):
+                # the city previously selected is not linked to this zip code
+                self.city_id, self.city = False, ''
             return {'domain': {
                 'city_id': [('id', 'in', self.zip_id.city_ids.ids)],
-            }}
+                    }}
         else:
             self.zip = ''
             return {'domain': {
                 'city_id': self.zip_id.city_ids.ids,
-            }}
+                    }}
 
-
-    @api.constrains('city_id','zip')
+    @api.constrains('city_id', 'zip')
     def set_state_country(self):
         for r in self:
             if r.city_id:
