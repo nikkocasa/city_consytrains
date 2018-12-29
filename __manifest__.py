@@ -21,7 +21,7 @@
     'application': 'True',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts'],
+    'depends': ['base', 'contacts', 'base_address_extended'],
 
     # always loaded
     'data': [

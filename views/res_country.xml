@@ -7,11 +7,9 @@
             <field name="inherit_id" ref="base.view_country_form"/>
             <field name="arch" type="xml">
 
-                <field name="code" position="after">
-                    <div>
-                        <field name="zip_name" placeholder="local name for zip code"/>
+                <field name="phone_code" position="after">
+                        <field name="zip_name" placeholder="local name for zip code: i.e. 'ZIP', 'CP', etc"/>
                         <field name="zip_format" placeholder="local format for zip code"/>
-                    </div>
                 </field>
             </field>
         </record>
@@ -25,7 +23,7 @@
     </data>
 </odoo>
 
-<!--
+<!-- original herited form :
 <form>
 	<field name="image" widget="image" class="oe_avatar" modifiers="{}"/>
 	<group>
