@@ -72,5 +72,5 @@ Next todo :
 Bugs
 ====
 
-https://github.com/nikkocasa/odoo_sedarome_modules.git
+https://github.com/nikkocasa/city_zip_constrains
 
