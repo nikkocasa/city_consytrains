@@ -29,6 +29,7 @@
 
                 <field name="state_id" position="after" >
                     <div>
+                        <field name="area_id_name" class="o_address_state" readonly="True"/>
                         <field name="state_id_name" class="o_address_state" readonly="True"/>
                     </div>
                 </field>

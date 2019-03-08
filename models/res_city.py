@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 
 class City(models.Model):
     _name = 'res.city'
+    _description = 'City'
+    _order = 'name'
 
     name = fields.Char(
         string='City Name'

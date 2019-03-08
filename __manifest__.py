@@ -17,15 +17,15 @@
     # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
     # for the full list
     'category': 'tools',
-    'version': '11.0.01',
-    'application': 'True',
+    'version': '12.0.01',
+    'application': 'False',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'contacts'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/res_city.xml',
         'views/res_zip.xml',
         'views/res_area.xml',

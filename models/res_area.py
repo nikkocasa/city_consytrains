@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 
 class Area(models.Model):
     _name = 'res.country.state.area'
+    _description = 'Country State Area'
+    _order = 'name'
 
     name = fields.Char(
         string='Name'

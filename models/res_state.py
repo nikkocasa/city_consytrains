@@ -6,7 +6,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class State(models.Model):
-    _inherit='res.country.state'
+    _inherit = 'res.country.state'
 
 
     area_ids = fields.One2many(
